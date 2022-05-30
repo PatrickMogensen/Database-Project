@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING(50),
-      allowNull: true
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING(255),
@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     role: {
       type: DataTypes.STRING(10),
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,

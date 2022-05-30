@@ -18,11 +18,19 @@ module.exports = function(sequelize, DataTypes) {
     loan_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: "loan_id_UNIQUE"
+      references: {
+        model: 'loan',
+        key: 'id'
+      },
+      unique: "fine_ibfk_1"
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
@@ -44,6 +52,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "loan_id" },
+        ]
+      },
+      {
+        name: "FK_user_id_idx",
+        using: "BTREE",
+        fields: [
+          { name: "user_id" },
         ]
       },
     ]

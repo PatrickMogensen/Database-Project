@@ -16,6 +16,10 @@ function initModels(sequelize) {
   book.hasMany(loan, { as: "loans", foreignKey: "book_id"});
   reservation.belongsTo(book, { as: "book", foreignKey: "book_id"});
   book.hasMany(reservation, { as: "reservations", foreignKey: "book_id"});
+  fine.belongsTo(loan, { as: "loan", foreignKey: "loan_id"});
+  loan.hasOne(fine, { as: "fine", foreignKey: "loan_id"});
+  fine.belongsTo(user, { as: "user", foreignKey: "user_id"});
+  user.hasMany(fine, { as: "fines", foreignKey: "user_id"});
   loan.belongsTo(user, { as: "user", foreignKey: "user_id"});
   user.hasMany(loan, { as: "loans", foreignKey: "user_id"});
   reservation.belongsTo(user, { as: "user", foreignKey: "user_id"});

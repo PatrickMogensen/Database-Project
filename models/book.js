@@ -7,11 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    loan_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Title: {
+    title: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
@@ -43,6 +39,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "index2",
+        using: "BTREE",
+        fields: [
+          { name: "title" },
         ]
       },
     ]

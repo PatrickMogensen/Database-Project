@@ -25,11 +25,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     begin_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.literal('cast(now() as date)')
     },
     end_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.literal('cast(now() as date) + interval 30 day')
     },
     status: {
       type: DataTypes.STRING(10),
@@ -38,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     sequelize,
     tableName: 'loan',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {
